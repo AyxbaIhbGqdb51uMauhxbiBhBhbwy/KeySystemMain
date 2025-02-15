@@ -3,6 +3,7 @@ const rateLimit = require('express-rate-limit');
 const fs = require('fs');
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const axios = require('axios'); // Import axios for HTTP requests
 require('dotenv').config();
 
 const app = express();
@@ -25,25 +26,42 @@ app.use(limiter);
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Helper function to generate a key by requesting an external API
+async function generateKey() {
+    try {
+        const response = await axios.get('https://starxkey-backend.vercel.app/generate?expired=1d');
+        
+        // Extract the 'key' from the response JSON
+        const key = response.data.key;
+        
+        // Ensure the key is available
+        if (!key) {
+            throw new Error('No key found in the response');
+        }
+
+        return key;
+    } catch (error) {
+        console.error('Error fetching key:', error.message);
+        throw error;
+    }
+}
+
 // Helper function to generate a token with a 5-minute expiration
 function generateToken() {
     try {
-        // Ensure SECRET_KEY is set
         if (!process.env.SECRET_KEY) {
             throw new Error('couldnt find key');
         }
         
-        // Generate the token
         return jwt.sign({}, process.env.SECRET_KEY, { expiresIn: '30s' });
     } catch (error) {
-        // Log error and throw it to be handled by the route
         console.error('Error generating token:', error.message);
         throw error;
     }
 }
 
 // Check Key route with error handling
-app.post('/check-key', (req, res) => {
+app.post('/check-key', async (req, res) => {
     try {
         const { key } = req.body;
 
@@ -52,14 +70,9 @@ app.post('/check-key', (req, res) => {
             return res.status(400).json({ error: 'Key is required' });
         }
 
-        const validKey = process.env.STATIC_KEY;
+        const validKey = await generateKey(); // Dynamically generate the key
 
-        // Ensure STATIC_KEY is set
-        if (!validKey) {
-            throw new Error('couldnt find key');
-        }
-
-        // Check if the provided key matches the valid key
+        // Check if the provided key matches the generated key
         if (key === validKey) {
             const token = generateToken();
             res.json({
@@ -80,18 +93,15 @@ app.post('/check-key', (req, res) => {
 app.post('/validate-token', (req, res) => {
     const { token } = req.body;
 
-    // Ensure token is provided
     if (!token) {
         return res.status(400).json({ error: 'Token is required' });
     }
 
     try {
-        // Ensure SECRET_KEY is set
         if (!process.env.SECRET_KEY) {
             throw new Error('couldnt find key');
         }
 
-        // Verify the token
         jwt.verify(token, process.env.SECRET_KEY, (err) => {
             if (err) {
                 return res.json({ valid: false });
@@ -105,49 +115,40 @@ app.post('/validate-token', (req, res) => {
 });
 
 // Get Key route (existing)
-app.get('/get-key', (req, res) => {
+app.get('/get-key', async (req, res) => {
     const referrer = req.get('referer') || '';
-    const ipAddress = req.ip; // Use IP address as a unique identifier
+    const ipAddress = req.ip;
 
-    // List of valid referrers (adjust this list based on observed variations)
     const validReferrers = [
         'linkvertise.com',
         'work.ink',
-        // Add other known variations
     ];
 
-    // Check if the referrer matches any known valid referrer patterns
     const isValidReferrer = validReferrers.some(validReferrer =>
         referrer.includes(validReferrer)
     );
 
     if (!isValidReferrer) {
-        // Path to the HTML file
         const filePath = path.join(__dirname, 'accessdenied.html');
         
-        // Read and send the HTML file
         fs.readFile(filePath, 'utf8', (err, data) => {
             if (err) {
-                // Handle file read error
                 res.status(500).send('An error occurred while processing your request.');
                 return;
             }
-    
-            // Send the HTML file with a 403 status code
+
             res.status(403).send(data);
         });
     } else {
-        // Return the static key
-        const staticKey = process.env.STATIC_KEY;
-        const timestamp = process.env.TIMESTAMP;
+        try {
+            const dynamicKey = await generateKey(); // Dynamically generate key from the API
+            const timestamp = new Date().toISOString();
 
-        // Check if the static key is defined
-        if (!staticKey) {
-            return res.status(500).json({ error: 'Internal Server Error: Key not found!' });
+            res.setHeader('Content-Type', 'text/html');
+            res.send(generateHtmlResponse(dynamicKey, timestamp));
+        } catch (error) {
+            res.status(500).json({ error: 'Error generating key' });
         }
-
-        res.setHeader('Content-Type', 'text/html');
-        res.send(generateHtmlResponse(staticKey, timestamp));
     }
 });
 
@@ -155,7 +156,6 @@ app.get('/get-key', (req, res) => {
 function generateHtmlResponse(key, timestamp) {
     const keysitePath = path.join(__dirname, 'keysite.html');
     
-    // Read the HTML keysite from file synchronously
     let html = fs.readFileSync(keysitePath, 'utf8');
     html = html.replace('${key}', key);
     html = html.replace('${timestamp}', timestamp);
