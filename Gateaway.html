@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gateaway</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0e0e11;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #141418;
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            max-width: 90%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 14px;
+            color: #a5a5a5;
+        }
+
+        button {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .links-provider {
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .lootlabs-btn {
+            background-color: #4b0082;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .linkvertise-btn {
+            background-color: #ffcc00;
+            color: black;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <h2>Pls Select One Quest To Get Key!</h2>
+        <p>Click Get Key And Complete all Steps then you will get your key! your key will expired In 24 hours!</p>
+    </div>
+
+    <div class="links-provider">
+        <button class="lootlabs-btn" onclick="loolabs()">
+            <img src="assets/lootlabs.png" alt="Lootlabs" class="btn-icon"> Lootlabs
+        </button>
+        <button class="linkvertise-btn" onclick="linkvertise()">
+            <img src="assets/linkvertise.png" alt="Linkvertise" class="btn-icon"> Linkvertise
+        </button>
+    </div>
+
+    <script>
+        function loolabs() {
+            window.open('https://loot-link.com/s?lEBLwTWS', '_blank');
+        }
+        function linkvertise() {
+            window.open('https://direct-link.net/1236271/star-x-key-system', '_blank');
+        }
+    </script>
+</body>
+</html>
