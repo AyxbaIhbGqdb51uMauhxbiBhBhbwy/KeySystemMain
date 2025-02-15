@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000; /* Jet black background */
+            font-family: 'Courier New', Courier, monospace;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            z-index: -1;
+        }
+
+        .error-container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.9); /* Dark background with slight transparency */
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #cc0000; /* Dark red border */
+            box-shadow: 0 0 25px #cc0000;
+            max-width: 600px;
+            width: 90%;
+            transition: transform 0.1s, box-shadow 0.3s;
+            transform-style: preserve-3d;
+        }
+
+        .error-container:hover {
+            box-shadow: 0 0 35px rgba(204, 0, 0, 0.9);
+        }
+
+        .error-container h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #cc0000; /* Dark red text */
+        }
+
+        .error-message {
+            background-color: #cc000015; /* Dark red background with slight transparency */
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 18px;
+            border: 1px solid #cc0000; /* Dark red border */
+            color: #cc0000;
+            box-shadow: 0 0 30px rgba(204, 0, 0, 0.7);
+        }
+
+        .error-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #cc0000; /* Dark red button */
+            color: #ffffff;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+            margin: 8px;
+        }
+
+        .error-container button:hover {
+            background-color: #b30000;
+            border-color: #b30000;
+            box-shadow: 0 8px 25px rgba(204, 0, 0, 0.9);
+            transform: scale(1.05);
+        }
+
+        .error-container button:active {
+            background-color: #990000;
+            border-color: #990000;
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.6);
+            transform: scale(0.98);
+        }
+
+        .error-container p {
+            margin-top: 15px;
+            color: #cc0000;
+            font-size: 16px;
+        }
+
+        .error-container .typewriter span {
+            display: inline-block;
+            font-size: 18px;
+            color: #cc0000;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 25px;
+            }
+
+            .error-container h1 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .error-message {
+                padding: 15px;
+                margin: 15px 0;
+                font-size: 16px;
+            }
+
+            .error-container button {
+                padding: 8px 16px;
+                font-size: 14px;
+                margin: 6px;
+            }
+
+            .error-container p {
+                font-size: 14px;
+            }
+
+            .error-container .typewriter span {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-container {
+                padding: 20px;
+            }
+
+            .error-container h1 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .error-message {
+                padding: 12px;
+                margin: 12px 0;
+                font-size: 14px;
+            }
+
+            .error-container button {
+                padding: 6px 12px;
+                font-size: 12px;
+                margin: 4px;
+            }
+
+            .error-container p {
+                font-size: 12px;
+            }
+
+            .error-container .typewriter span {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="error-container">
+        <h1>Access Denied</h1>
+        <div class="error-message">
+            <p>KEY HIDDEN: Bypass Detected!</p>
+        </div>
+        <p>If this seems like a mistake, <a href="https://discord.gg/venoxhub" target="_blank" style="color: #cc0000;">join our Discord</a>.</p>
+        <div class="typewriter">
+            <span id="typewriter"></span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script>
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#cc0000"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.7,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 4,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#cc0000",
+                    "opacity": 0.5,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        const messages = [
+            "Tried to bypass? Nice try.",
+            "Attempted bypass detected. Please try again.",
+            "Access denied. You don't have permission to proceed.",
+            "Encountering issues? Reach out to our support team on Discord!"
+        ];
+
+
+        let currentMessage = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function type() {
+            const currentText = messages[currentMessage];
+            const displayText = isDeleting
+                ? currentText.substring(0, currentChar--)
+                : currentText.substring(0, currentChar++);
+
+            typewriterElement.textContent = displayText;
+
+            if (!isDeleting && currentChar === currentText.length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                }, 2000);
+            } else if (isDeleting && currentChar === 0) {
+                isDeleting = false;
+                currentMessage = (currentMessage + 1) % messages.length;
+            }
+
+            const speed = isDeleting ? 50 : 100;
+            setTimeout(type, speed);
+        }
+
+        function startTypewriter() {
+            type();
+        }
+
+        startTypewriter();
+
+        document.addEventListener('mousemove', (event) => {
+    const errorContainer = document.querySelector('.error-container');
+    const { clientX: mouseX, clientY: mouseY } = event;
+    const rect = errorContainer.getBoundingClientRect();
+    const isInside = mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom;
+
+    if (isInside) {
+        // Calculate mouse position relative to container
+        const mouseXRelative = mouseX - rect.left;
+        const mouseYRelative = mouseY - rect.top;
+        const xPercent = (mouseXRelative / rect.width) - 0.5;
+        const yPercent = (mouseYRelative / rect.height) - 0.5;
+
+        // Adjust the rotation direction to tilt away from the mouse
+        const rotateX = yPercent * -20;  // Tilt amount for vertical direction (negative for lifting effect)
+        const rotateY = xPercent * 20;   // Tilt amount for horizontal direction
+
+        // Apply the calculated rotations to the container
+        errorContainer.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    } else {
+        // Reset the rotation when the mouse is outside the container
+        errorContainer.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    }
+});
+
+
+
+
+    </script>
+</body>
+</html>
