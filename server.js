@@ -122,6 +122,8 @@ app.get('/get-key', async (req, res) => {
     const validReferrers = [
         'linkvertise.com',
         'work.ink',
+        'loot-link.com',
+        'direct-link.net'
     ];
 
     const isValidReferrer = validReferrers.some(validReferrer =>
