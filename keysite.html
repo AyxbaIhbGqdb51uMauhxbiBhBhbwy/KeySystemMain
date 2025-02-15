@@ -3,390 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venoxware Key Display</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" integrity="sha512-GzUgyYPXBeEUhR0Rxp6Q5QHCErxQKlelfO8d/6erDIt3QWm5i3dxJEFvqaxRj7MbFMOqco7y5hAICJ5uRcdCBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>hi bro</title>
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #0e0e11;
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: black;
-            font-family: 'Courier New', Courier, monospace;
-            color: white;
-            overflow: hidden;
-            position: relative;
-            perspective: 1000px;
+            height: 100vh;
         }
 
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            z-index: -1;
-        }
-
-        .key-container {
+        .container {
+            background-color: #141418;
+            border-radius: 10px;
             text-align: center;
-            z-index: 1;
-            background-color: rgba(0, 0, 0, 0.8);
             padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #7700ff;
-            box-shadow: 0 0 15px #7700ff; /* Base shadow color */
-            max-width: 600px;
-            width: 90%;
-            transition: transform 0.1s, box-shadow 0.3s; /* Include transition for box-shadow */
-            transform-style: preserve-3d;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
         }
 
-        .key-container:hover {
-            box-shadow: 0 0 25px rgba(133, 28, 253, 0.8);
+        h2 {
+            margin-bottom: 10px;
         }
 
-        .key-container h1 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #7700ff;
+        p {
+            color: #a5a5a5;
+            font-size: 14px;
+            margin-bottom: 20px;
         }
 
-        .keybox {
-            background-color: #7700ff10;
-            border-radius: 10px;
-            padding: 15px;
+        .key-box {
+            background-color: #0e0e11;
+            border: 1px solid #3a3a3e;
+            border-radius: 8px;
+            color: #ffffff;
+            padding: 10px;
             margin: 15px 0;
             font-size: 16px;
-            border: 1px solid #7700ff;
-            color: #7700ff;
             word-break: break-all;
-            box-shadow: 0 0 20px rgba(119, 0, 255, 0.6);
-            transition: box-shadow 0.3s;
         }
 
-        .keybox:hover {
-            box-shadow: 0 0 30px rgba(119, 0, 255, 0.8);
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
         }
 
-        .key-container button {
-            padding: 8px 16px;
-            font-size: 14px;
-            background-color: #7700ff;
-            color: #ffffff; /* White text for better readability */
-            border: 2px solid transparent;
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
             border-radius: 6px;
+            padding: 10px 20px;
             cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
-            margin: 6px;
-            font-family: 'Courier New', Courier, monospace; /* Match the site's font */
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .key-container button:hover {
-            background-color: #6600cc;
-            border-color: #6600cc;
-            box-shadow: 0 8px 20px rgba(119, 0, 255, 0.8);
-            transform: scale(1.05); /* Slightly enlarge the button on hover */
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
         }
 
-        .key-container button:active {
-            background-color: #5500aa;
-            border-color: #5500aa;
-            box-shadow: 0 4px 10px rgba(119, 0, 255, 0.6);
-            transform: scale(0.98); /* Slightly shrink the button on click */
+        button:active {
+            transform: scale(0.95);
         }
 
-        .key-container p {
-            margin-top: 10px;
-            color: #a661f5;
+        .discord-btn {
+            background-color: #7289da;
+        }
+
+        .discord-btn:hover {
+            background-color: #5a6da8;
+        }
+
+        .copied {
+            background-color: #28a745 !important;
+        }
+
+        .footer-links a {
+            color: #a5a5a5;
+            text-decoration: none;
             font-size: 12px;
+            margin: 0 10px;
         }
 
-        .key-container .typewriter span {
-            display: inline-block;
-            font-size: 16px;
-            color: #a661f5;
-            letter-spacing: 1px;
-        }
-
-        .last-updated {
-            margin-top: 10px;
-            font-size: 12px;
-            color: #a661f5;
-        }
-
-        @media (max-width: 768px) {
-            .key-container {
-                padding: 15px;
-            }
-
-            .key-container h1 {
-                font-size: 20px;
-                margin-bottom: 10px;
-            }
-
-            .keybox {
-                padding: 10px;
-                margin: 10px 0;
-                font-size: 14px;
-            }
-
-            .key-container button {
-                padding: 6px 12px;
-                font-size: 12px;
-                margin: 4px;
-            }
-
-            .key-container p {
-                font-size: 10px;
-            }
-
-            .key-container .typewriter span {
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .key-container {
-                padding: 10px;
-            }
-
-            .key-container h1 {
-                font-size: 18px;
-                margin-bottom: 5px;
-            }
-
-            .keybox {
-                padding: 8px;
-                margin: 8px 0;
-                font-size: 12px;
-            }
-
-            .key-container button {
-                padding: 4px 8px;
-                font-size: 10px;
-                margin: 2px;
-            }
-
-            .key-container p {
-                font-size: 8px;
-            }
-
-            .key-container .typewriter span {
-                font-size: 12px;
-            }
+        .footer-links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div class="key-container">
-        <h1>Venoxware Key</h1>
-        <div class="keybox">
-            <pre><code class="language-lua">${key}</code></pre>
+    <div class="container">
+        <h2>Successfully Getting Key!</h2>
+        <p>Thank You for getting the key, Join Our Discord To Get Freemium Key!</p>
+        <div class="key-box" id="key-box">${key}</div>
+        <div class="button-container">
+            <button id="copy-btn" onclick="copyToClipboard()">Copy</button>
+            <button class="discord-btn" onclick="window.open('https://discord.gg/juRYbcKdYW', '_blank')">Join Discord</button>
         </div>
-        <button onclick="copyKey()">Copy Key</button>
-        <button onclick="joinDiscord()">Get Script Now!</button>
-        <p>Your access is limited to this session. Please save the key!</p>
-        <div class="typewriter">
-            <span id="typewriter"></span>
-        </div>
-        <div class="last-updated" id="last-updated"></div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" integrity="sha512-RQxPSmCPTGp7HO4ZJAXY1VOE4jIF5iAnD1ZMgPbdrqEzdfhtcG5/NTcWWhZZKuQdSCuK9m5ge4tguDr3qdp6aw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-lua.min.js" integrity="sha512-eISo0M6v2QzT0vytMG5El+28oa0+mSiOmQ/Ni3+cQJ7e8sqgy5Or4LtjY6J3Ri13zA6aFZzDNaYfYtZPZ3P/sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <script>
-        // Particles.js configuration
-        particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#7700ff"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#7700ff",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 6,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "repulse"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 400,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
-        });
+        function copyToClipboard() {
+            const key = document.getElementById("key-box").innerText;
+            navigator.clipboard.writeText(key).then(() => {
+                const copyBtn = document.getElementById("copy-btn");
+                copyBtn.textContent = "Copied!";
+                copyBtn.classList.add("copied");
 
-        function copyKey() {
-            const keyElement = document.querySelector('.keybox code');
-            navigator.clipboard.writeText(keyElement.textContent)
-                .then(() => {
-                    alert('Key copied to clipboard!');
-                })
-                .catch(err => {
-                    alert('Failed to copy key: ' + err);
-                });
-        }
-
-        function joinDiscord() {
-            window.open('https://discord.gg/venoxhub', '_blank');
-        }
-
-        const messages = [
-            "over 17.5k users",
-            "best free rivals script",
-            "Join the discord for more!",
-            "idk!"
-        ];
-        let currentMessage = 0;
-        let currentChar = 0;
-        let isDeleting = false;
-        const typewriterElement = document.getElementById('typewriter');
-
-        function type() {
-            const currentText = messages[currentMessage];
-            const displayText = isDeleting
-                ? currentText.substring(0, currentChar--)
-                : currentText.substring(0, currentChar++);
-
-            typewriterElement.textContent = displayText;
-
-            if (!isDeleting && currentChar === currentText.length) {
+                // Reset button after 2 seconds
                 setTimeout(() => {
-                    isDeleting = true;
+                    copyBtn.textContent = "Copy";
+                    copyBtn.classList.remove("copied");
                 }, 2000);
-            } else if (isDeleting && currentChar === 0) {
-                isDeleting = false;
-                currentMessage = (currentMessage + 1) % messages.length;
-            }
-
-            const speed = isDeleting ? 50 : 100;
-            setTimeout(type, speed);
-        }
-
-        function startTypewriter() {
-            type();
-        }
-
-        startTypewriter();
-
-        document.addEventListener('mousemove', (event) => {
-            const keyContainer = document.querySelector('.key-container');
-            const { clientX: mouseX, clientY: mouseY } = event;
-            const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
-
-            const rotateX = ((mouseY / windowHeight) - 0.5) * 20;
-            const rotateY = ((mouseX / windowWidth) - 0.5) * -20;
-
-            keyContainer.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        // Set last updated time
-        const lastUpdatedElement = document.getElementById('last-updated');
-        const timestamp = '${timestamp}'; 
-        const lastUpdatedDate = new Date(timestamp);
-        lastUpdatedElement.textContent = `Key last updated: ${formatTimeElapsed(lastUpdatedDate)}`;
-
-        function formatTimeElapsed(date) {
-            const now = new Date();
-            const diff = now - date;
-            const minutes = Math.floor(diff / 60000);
-            const hours = Math.floor(minutes / 60);
-            const days = Math.floor(hours / 24);
-
-            if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
-            if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
-            if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
-            return 'Just now';
+            }).catch(() => {
+                alert("Failed to copy key. Please try manually.");
+            });
         }
     </script>
 </body>
