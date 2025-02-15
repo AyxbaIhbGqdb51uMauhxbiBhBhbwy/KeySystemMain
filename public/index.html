@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>venoxware</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" integrity="sha512-GzUgyYPXBeEUhR0Rxp6Q5QHCErxQKlelfO8d/6erDIt3QWm5i3dxJEFvqaxRj7MbFMOqco7y5hAICJ5uRcdCBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta property="og:title" content="Venoxware">
+    <meta property="og:description" content="Best Rivals Script">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://media.discordapp.net/attachments/1265173851613171732/1265836705739575346/o.png?ex=66a2f5cc&is=66a1a44c&hm=3899ba2a8312e02837e9411227ab33d69d66c85ecd153c18089d0b63341d51e3&=&format=webp&quality=lossless">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: -1;
+        }
+
+        .enter-button, .content, .status-message, .script-message {
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        .enter-button {
+            cursor: pointer;
+        }
+
+        .enter-button:hover {
+            text-decoration: underline;
+        }
+
+        .status-message, .script-message, .content {
+            display: none;
+        }
+
+        .content a {
+            color: #7700ff;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content p {
+            margin: 5px 0;
+        }
+
+        .content .links {
+            margin-top: 20px;
+        }
+
+        .content .links a {
+            margin: 0 10px;
+        }
+
+        .script-box {
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            display: inline-block;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            max-width: 80%;
+            word-break: break-word;
+            overflow: hidden;
+        }
+
+        pre[class*="language-"] {
+            background: none;
+            padding: 0;
+            margin: 0;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .content img {
+            max-width: 200px; /* You can adjust the width as needed */
+            height: auto;
+            margin-bottom: 20px; /* Adds some space below the image */
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="enter-button" id="enter-button">Click to Enter</div>
+    <div class="content" id="content">
+        <!-- Add your image here -->
+        <img src="o.png" alt="">
+        <p><a href="#" id="username">venoxware</a> - <span id="typewriter"></span></p>
+        <p class="links">
+            <a href="https://discord.gg/venoxhub" target="_blank">discord</a> /
+            <a href="#" id="status-link">status</a> 
+            <a href="tos.html" target="_blank"></a>
+        </p>
+    </div>
+    <div class="status-message" id="status-message">Venoxware fully operational on almost any executor including Solara!</div>
+    <div class="script-message" id="script-message">
+        <div class="script-box">
+            <pre><code class="language-lua">soon</code></pre>
+        </div>
+    </div>
+
+    <!-- Background audio -->
+    <audio id="background-audio" loop>
+        <source src="07240(1).wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Include particles.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <!-- Include Prism.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" integrity="sha512-RQxPSmCPTGp7HO4ZJAXY1VOE4jIF5iAnD1ZMgPbdrqEzdfhtcG5/NTcWWhZZKuQdSCuK9m5ge4tguDr3qdp6aw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-lua.min.js" integrity="sha512-eISo0M6v2QzT0vytMG5El+28oa0+mSiOmQ/Ni3+cQJ7e8sqgy5Or4LtjY6J3Ri13zA6aFZzDNaYfYtZPZ3P/sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#7700ff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#7700ff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        const messages = [
+            "over +16k users",
+            "best rivals script",
+            "Join the discord"
+        ];
+        let currentMessage = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function type() {
+            const currentText = messages[currentMessage];
+            const displayText = isDeleting
+                ? currentText.substring(0, currentChar--)
+                : currentText.substring(0, currentChar++);
+
+            typewriterElement.textContent = displayText;
+
+            if (!isDeleting && currentChar === currentText.length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                }, 2000);
+            } else if (isDeleting && currentChar === 0) {
+                isDeleting = false;
+                currentMessage = (currentMessage + 1) % messages.length;
+            }
+
+            const speed = isDeleting ? 50 : 100;
+            setTimeout(type, speed);
+        }
+
+        function startTypewriter() {
+            type();
+        }
+
+        document.getElementById('enter-button').addEventListener('click', () => {
+            document.getElementById('enter-button').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('background-audio').play();
+            startTypewriter();
+        });
+
+        document.getElementById('status-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            document.getElementById('content').style.display = 'none';
+            document.getElementById('status-message').style.display = 'block';
+        });
+
+        document.getElementById('script-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            document.getElementById('content').style.display = 'none';
+            document.getElementById('script-message').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
