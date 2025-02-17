@@ -3,95 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gateaway</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0e0e11;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background-color: #141418;
-            border-radius: 10px;
-            text-align: center;
-            padding: 20px;
-            max-width: 90%;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        h2 {
-            color: #ffffff;
-        }
-
-        p {
-            font-size: 14px;
-            color: #a5a5a5;
-        }
-
-        button {
-            background-color: #ffffff;
-            color: #000000;
-            border: none;
-            border-radius: 6px;
-            padding: 10px 20px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #e0e0e0;
-        }
-
-        .links-provider {
-            margin: 10px 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .lootlabs-btn {
-            background-color: #4b0082;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .linkvertise-btn {
-            background-color: #ffcc00;
-            color: black;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .btn-icon {
-            width: 20px;
-            height: 20px;
-        }
-    </style>
+    <title>Gateway</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-
-
-    <div class="container">
-        <h2>Pls Select One Quest To Get Key!</h2>
-        <p>Click Get Key And Complete all Steps then you will get your key! your key will expired In 24 hours!</p>
+<body class="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-gray-900 to-purple-900 text-white">
+    <div class="bg-gray-800 p-6 rounded-xl shadow-lg text-center max-w-md w-full transition-transform transform hover:scale-105 hover:shadow-2xl">
+        <h2 class="text-2xl font-bold">Pls Select One Quest To Get Key!</h2>
+        <p class="text-gray-400 mt-2">Click Get Key And Complete all Steps then you will get your key! Your key will expire in 24 hours!</p>
     </div>
 
-    <div class="links-provider">
-        <button class="lootlabs-btn" onclick="loolabs()">
-            <img src="assets/lootlabs.png" alt="Lootlabs" class="btn-icon"> Lootlabs
+    <div class="flex space-x-4 mt-6">
+        <button onclick="loolabs()" class="flex items-center space-x-2 bg-purple-700 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg transition transform hover:scale-105">
+            <img src="assets/lootlabs.png" alt="Lootlabs" class="w-5 h-5"> 
+            <span>Lootlabs</span>
         </button>
-        <button class="linkvertise-btn" onclick="linkvertise()">
-            <img src="assets/linkvertise.png" alt="Linkvertise" class="btn-icon"> Linkvertise
+        <button onclick="linkvertise()" class="flex items-center space-x-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition transform hover:scale-105">
+            <img src="assets/linkvertise.png" alt="Linkvertise" class="w-5 h-5"> 
+            <span>Linkvertise</span>
         </button>
     </div>
 
